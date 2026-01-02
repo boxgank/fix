@@ -82,7 +82,7 @@
   <!-- ===== DAFTAR MEMBER ===== -->
  <h2 class="section-title">Daftar Member</h2>
 
-<button id="MemberBtn" class="toggleMemberBtn">
+<button id="MemberBtn" class="toggle-btn">
   Tampilkan Daftar Member
 </button>
 
@@ -253,7 +253,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   <h2 class="section-title">Jadwal Show</h2>
 
-  <button id="toggleScheduleBtn" class="toggleScheduleBtn">
+  <button id="toggleScheduleBtn" class="toggle-btn">
     Tampilkan Jadwal Show
   </button>
 
@@ -269,29 +269,6 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>
   </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-
-  const memberBtn = document.getElementById("toggleMemberBtn");
-  const memberSec = document.getElementById("memberSection");
-
-  memberBtn.addEventListener("click", () => {
-    memberSec.classList.toggle("hidden");
-    memberBtn.textContent = memberSec.classList.contains("hidden")
-      ? "Tampilkan Daftar Member"
-      : "Sembunyikan Daftar Member";
-  });
-
-  const scheduleBtn = document.getElementById("toggleScheduleBtn");
-  const scheduleSec = document.getElementById("scheduleSection");
-
-  scheduleBtn.addEventListener("click", () => {
-    scheduleSec.classList.toggle("hidden");
-    scheduleBtn.textContent = scheduleSec.classList.contains("hidden")
-      ? "Tampilkan Jadwal Show"
-      : "Sembunyikan Jadwal Show";
-  });
-
   // Partikel
  <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -304,39 +281,29 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.appendChild(p);
   }
 });
-</script>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
+  // ===== DAFTAR MEMBER =====
   const memberBtn = document.getElementById("MemberBtn");
   const memberSec = document.getElementById("memberSection");
 
-  if (!memberBtn || !memberSec) {
-    console.log("Tombol atau section tidak ditemukan");
-    return;
+  if (memberBtn && memberSec) {
+    memberBtn.addEventListener("click", function () {
+      memberSec.classList.toggle("hidden");
+      memberBtn.textContent = memberSec.classList.contains("hidden")
+        ? "Tampilkan Daftar Member"
+        : "Sembunyikan Daftar Member";
+    });
   }
 
-  memberBtn.addEventListener("click", function () {
-    memberSec.classList.toggle("hidden");
-
-    memberBtn.textContent = memberSec.classList.contains("hidden")
-      ? "Tampilkan Daftar Member"
-      : "Sembunyikan Daftar Member";
-  });
-
-});
-</script>
-
-
-   <script>
-document.addEventListener("DOMContentLoaded", () => {
-
+  // ===== JADWAL SHOW =====
   const scheduleBtn = document.getElementById("toggleScheduleBtn");
   const scheduleSec = document.getElementById("scheduleSection");
 
   if (scheduleBtn && scheduleSec) {
-    scheduleBtn.addEventListener("click", () => {
+    scheduleBtn.addEventListener("click", function () {
       scheduleSec.classList.toggle("hidden");
       scheduleBtn.textContent = scheduleSec.classList.contains("hidden")
         ? "Tampilkan Jadwal Show"
@@ -347,7 +314,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
-
+   
 </body>
 </html>
 
