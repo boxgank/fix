@@ -310,31 +310,5 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 </body>
-   <script>
-document.addEventListener("DOMContentLoaded", () => {
-
-  const memberBtn = document.getElementById("toggleMemberBtn");
-  const memberSec = document.getElementById("memberSection");
-
-  memberBtn.onclick = () => {
-    memberSec.classList.toggle("hidden");
-    memberBtn.textContent = memberSec.classList.contains("hidden")
-      ? "Tampilkan Daftar Member"
-      : "Sembunyikan Daftar Member";
-  };
-
-  const scheduleBtn = document.getElementById("toggleScheduleBtn");
-  const scheduleSec = document.getElementById("scheduleSection");
-
-  scheduleBtn.onclick = () => {
-    scheduleSec.classList.toggle("hidden");
-    scheduleBtn.textContent = scheduleSec.classList.contains("hidden")
-      ? "Tampilkan Jadwal Show"
-      : "Sembunyikan Jadwal Show";
-  };
-
-});
-</script>
-
 </html>
 
