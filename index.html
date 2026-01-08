@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>48 Replay</title>
+
+<head>
+  <meta charset="UTF-8">
+  <title>48 Replay</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const btn = document.getElementById("modeToggle");
+  const icon = btn.querySelector("i");
+  const text = btn.querySelector("span");
+
+  // LOAD STATUS
+  if(localStorage.getItem("theme") === "dark"){
+    document.body.classList.add("dark");
+    icon.className = "fa-solid fa-sun";
+    text.textContent = "Mode Siang";
+  }
+
+  // KLIK TOMBOL
+  btn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    const isDark = document.body.classList.contains("dark");
+
+    icon.className = isDark
+      ? "fa-solid fa-sun"
+      : "fa-solid fa-moon";
+
+    text.textContent = isDark
+      ? "Mode Siang"
+      : "Mode Malam";
+
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  });
+
+});
+</script>
+
+
+
+<body>
+
+<nav class="navbar">
+  <b>48 Replay</b>
+
+  <div class="nav-right">
+    <a href="sorter">Sorter</a>
+
+    <!-- TOMBOL MODE -->
+    <button class="mode-btn" id="modeToggle">
+      <i class="fa-solid fa-moon"></i>
+      <span>Mode Malam</span>
+    </button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg">
+    <div class="line l1">
+      <div class="track">
+        <span> · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION </span>
+        <span> · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION </span>
+        <span> · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION </span>
+      </div>
+    </div>
+    <div class="line l2">
+      <div class="track">
+        <span> · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE </span>
+        <span> · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE </span>
+        <span> · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE </span>
+      </div>
+    </div>
+    <div class="line l3">
+      <div class="track">
+        <span> · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM </span>
+        <span> · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM </span>
+        <span> · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM </span>
+      </div>
+    </div>
+    <div class="line l4">
+      <div class="track">
+        <span> · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION </span>
+        <span> · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION </span>
+        <span> · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION · FIGHT FOR LOVE · FIGHT FOR DREAM · FIGHT FOR PASSION </span>
+      </div>
+    </div>
+    <div class="line l5">
+      <div class="track">
+        <span> · FIGHT FOR DREAM · FIGHT FOR LOVE · FIGHT FOR PASSION · FIGHT FOR DREAM · FIGHT FOR LOVE · FIGHT FOR PASSION · FIGHT FOR DREAM · FIGHT FOR LOVE · FIGHT FOR PASSION </span>
+        <span> · FIGHT FOR DREAM · FIGHT FOR LOVE · FIGHT FOR PASSION · FIGHT FOR DREAM · FIGHT FOR LOVE · FIGHT FOR PASSION · FIGHT FOR DREAM · FIGHT FOR LOVE · FIGHT FOR PASSION </span>
+        <span> · FIGHT FOR DREAM · FIGHT FOR LOVE · FIGHT FOR PASSION · FIGHT FOR DREAM · FIGHT FOR LOVE · FIGHT FOR PASSION · FIGHT FOR DREAM · FIGHT FOR LOVE · FIGHT FOR PASSION </span>
+      </div>
+    </div>
+    <div class="line l6">
+      <div class="track">
+        <span> · FIGHT FOR PASSION · FIGHT FOR DREAM · FIGHT FOR LOVE · FIGHT FOR PASSION · FIGHT FOR DREAM · FIGHT FOR LOVE · FIGHT FOR PASSION · FIGHT FOR DREAM · FIGHT FOR LOVE </span>
+        <span> · FIGHT FOR PASSION · FIGHT FOR DREAM · FIGHT FOR LOVE · FIGHT FOR PASSION · FIGHT FOR DREAM · FIGHT FOR LOVE · FIGHT FOR PASSION · FIGHT FOR DREAM · FIGHT FOR LOVE </span>
+        <span> · FIGHT FOR PASSION · FIGHT FOR DREAM · FIGHT FOR LOVE · FIGHT FOR PASSION · FIGHT FOR DREAM · FIGHT FOR LOVE · FIGHT FOR PASSION · FIGHT FOR DREAM · FIGHT FOR LOVE </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOGO TENGAH -->
+  <div class="hero-content">
+    <img src="img/jkt-fight.png" alt="JKT48 Fight">
+  </div>
+</section>
+
+
+
+
+
+<div class="container">
+
+    <div class="card">     
+    <h2>Show Hari ini :</h2>
+     <div class="event">
+      <img src="https://i.pinimg.com/736x/6e/b6/16/6eb616122414f38805b9c8b230aee68b.jpg/500">
+      <div>
+        <h3>KIRA KIRA GIRLS</h3>
+        <p>📅 Minggu, 28 Desember 2025</p>
+        <p>⏰ 11:45 WIB</p>
+      </div>
+    </div>
+
+    <div class="event">
+      <img src="https://i.pinimg.com/736x/6e/b6/16/6eb616122414f38805b9c8b230aee68b.jpg/500">
+      <div>
+        <h3>KIRA KIRA GIRLS</h3>
+        <p>📅 Minggu, 28 Desember 2025</p>
+        <p>⏰ 11:45 WIB</p>
+      </div>
+    </div>
+       
+   <p>.</p>
+   <h2>Nobar Show Gratis :</h2>
+    <div class="buttons big-buttons">
+      <div>
+        <a class="fb" href="https://facebook.com/gsixx3" target="_blank">
+           <i class="fa-brands fa-facebook-f"></i>
+           <span>Facebook Live</span>
+        </a>    
+        <p>Wajib sudah ADD Pertemanan Facebook untuk nonton Live</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+  <h2>Sosial Media</h2>
+
+  <div class="buttons big-buttons">
+    <a class="yt" href="https://www.youtube.com/@48replay" target="_blank">
+      <i class="fa-brands fa-youtube"></i>
+      <span>YouTube</span>
+    </a>
+
+    <a class="ig" href="https://www.instagram.com/48replay" target="_blank">
+       <i class="fa-brands fa-instagram"></i>
+      <span>Instagram</span>
+    </a>
+
+    <a class="tt" href="https://www.tiktok.com/@48replay" target="_blank">
+      <i class="fa-brands fa-tiktok"></i>
+      <span>TikTok</span>
+    </a>
+
+    <a class="dc" href="https://discord.gg/xxxxxx" target="_blank">
+      <i class="fa-brands fa-discord"></i>
+      <span>Discord</span>
+    </a>
+
+   <h2>Dukung kami</h2>
+     
+    <a class="sw" href="https://saweria.co/masterkardus" target="_blank">
+      <i class="fa-solid fa-mug-hot"></i>
+      <span>Saweria</span>
+    </a>
+  </div>
+</div>
+
+
+
+  <div class="card card-member">
+
+  <!-- ===== DAFTAR MEMBER ===== -->
+  <h2 class="section-title">Daftar Member</h2>
+
+  <button id="toggleMemberBtn" class="toggle-btn">
+    Tampilkan Daftar Member
+  </button>
+
+  <div id="memberSection" class="hidden">
+
+   <h3 class="group-title">❤️ Team Love</h3>
+<div class="member-grid">
+
+<div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/alya_amanda.jpg?v=20231212"><p>Alya Amanda</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/anindya_ramadhani.jpg?v=20231212"><p>Anindya Ramadhani</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/aurellia.jpg?v=20230531"><p>Aurellia</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/aurhel_alana.jpg?v=20231212"><p>Aurhel Alana</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/cathleen_nixie.jpg?v=20231212"><p>Cathleen Nixie</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/celline_thefani.jpg?v=20231212"><p>Celline Thefani</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/cynthia_yaputera.jpg?v=20231212"><p>Cynthia Yaputera</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/fiony_alveria.jpg?v=20230116"><p>Fiony Alveria</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/fritzy_rosmerian.jpg"><p>Fritzy Rosmerian</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/grace_octaviani.jpg?v=20231212"><p>Grace Octaviani</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/hillary_abigail.jpg"><p>Hillary Abigail</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/indah_cahya.jpg?v=20230116"><p>Indah Cahya</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/jazzlyn_trisha.jpg"><p>Jazzlyn Trisha</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/michelle_alexandra.jpg?v=20231212"><p>Michelle Alexandra</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/nayla_suji.jpg"><p>Nayla Suji</p></div>
+
+
+</div>
+
+<h3 class="group-title">🌙 Team Dream</h3>
+<div class="member-grid">
+
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/adeline_wijaya.jpg"><p>Adeline Wijaya</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/amanda_sukma.jpg?v=20230530"><p>Amanda Sukma</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/chelsea_davina.jpg?v=20231212"><p>3. Chelsea Davina</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/febriola_sinambela.jpg?v=20230116"><p>Febriola Sinambela</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/freya_jayawardana.jpg?v=20230116"><p>Freya Jayawardana</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src=https://jkt48.com/profile/gabriela_abigail.jpg?v=20230531"><p>Gabriela Abigail</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/gendis_mayrannisa.jpg?v=20231212"><p>Gendis Mayrannisa</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/gita_sekar_andarini.jpg?v=20230116"><p>Gita Sekar Andarini</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/greesella_adhalia.jpg?v=20231212"><p>Greesela Adhalia</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/helisma_putri.jpg?v=20230116"><p>Helisma Putri</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/jesslyn_elly.jpg?v=20230531"><p>Jesslyn Elly</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/marsha_lenathea.jpg?v=20230116"><p>Marsha Lenathea</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/nina_tutachia.jpg?v=20231212"><p>Nina Tutachia</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/oline_manuel.jpg"><p>Oline Manuel</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/shabilqis_naila.jpg"><p>Shabilqis Naila</p></div>
+
+</div>
+
+<h3 class="group-title">🔥 Team Passion</h3>
+<div class="member-grid">
+
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/abigail_rachel.jpg"><p>Abigail Rachel</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/angelina_christy.jpg?v=20230116"><p>Angelina Christy</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/catherina_vallencia.jpg"><p>Catherina Vallencia</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/cornelia_vanisa.jpg?v=20230116"><p>Cornelia Vanisa</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/dena_natalia.jpg?v=20231212"><p>Dena Natalia</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/desy_natalia.jpg?v=20231212"><p>Desy Natalia</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/feni_fitriyanti.jpg?v=20230116"><p>Feni Fitriyanti</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/jessica_chandra.jpg?v=20230116"><p>Jessica Chandra</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/kathrina_irene.jpg?v=20230116"><p>Kathrina Irene</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/lulu_salsabila.jpg?v=20230116"><p>Lulu Salsabila</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/michelle_levia.jpg"><p>Michelle Levia</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/mutiara_azzahra.jpg?v=20230116"><p>Mutiara Azzahra</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/raisha_syifa.jpg?v=20230530"><p>Raisha Syifa</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/ribka_budiman.jpg"><p>Ribka Budiman</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/victoria_kimberly.jpg"><p>Victoria Kimberly</p></div>
+  
+</div>
+
+   <h3 class="group-title">🌱 Trainee</h3>
+<div class="member-grid">
+
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/Astrella_Virgiananda.jpg"><p>Astrella Virgiananda</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/Aulia_Riza.jpg"><p>Aulia Riza</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/Bong_Aprilli.jpg"><p>Bong Aprilli</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/Hagia_Sopia.jpg"><p>Hagia Sopia</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/Humaira_Ramadhani.jpg"><p>Humaira Ramadhani</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/Jacqueline_Immanuela.jpg"><p>Jacqueline Immanuela</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/Jemima_Evodie.jpg"><p>Jemima Evodie</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/Mikaela_Kusjanto.jpg"><p>Mikaela Kusjanto</p></div>
+  <div class="member-card"
+     data-ig="https://instagram.com/username"
+     data-x="https://x.com/username"
+     data-tt="https://tiktok.com/@username"
+     data-idn="https://www.idn.app/username"
+     data-sr="https://www.showroom-live.com/username">
+  <img src="https://jkt48.com/profile/Nur_Intan.jpg"><p>Nur Intan</p></div>
+
+   </div>
+   </div>
+</div>
+   <!-- ===== JADWAL SHOW ===== -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>48 Replay</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+body{
+  background:#f5f6fa;
+  padding:20px;
+}
+
+/* ===== BUTTON ===== */
+.toggle-btn{
+  width:100%;
+  padding:14px;
+  margin:15px 0;
+  border:none;
+  border-radius:12px;
+  background:#ff004c;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.3s;
+}
+.toggle-btn:hover{
+  transform:scale(1.05);
+}
+
+/* ===== SECTION ===== */
+.section-title{
+  font-size:22px;
+  font-weight:800;
+  margin-top:40px;
+}
+
+.hidden{
+  display:none;
+}
+
+/* ===== MEMBER ===== */
+.member-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
+  gap:15px;
+  margin-top:15px;
+}
+
+.member-card{
+  background:#fff;
+  padding:12px;
+  border-radius:14px;
+  text-align:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.1);
+}
+
+.member-card img{
+  width:100%;
+  border-radius:10px;
+}
+
+/* ===== JADWAL ===== */
+.schedule{
+  background:#fff;
+  padding:15px;
+  border-radius:14px;
+  margin-top:15px;
+  box-shadow:0 6px 18px rgba(0,0,0,.1);
+}
+
+.schedule h3{
+  color:#ff004c;
+}
+
+/* ===== PARTIKEL ===== */
+.idol{
+  position:fixed;
+  top:-10px;
+  width:10px;
+  height:10px;
+  background:rgba(255,255,255,.8);
+  border-radius:50%;
+  animation:fall linear infinite;
+}
+
+@keyframes fall{
+  to{transform:translateY(110vh);}
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- ================= JADWAL SHOW ================= -->
+<div class="card card-member">
+
+  <h2 class="section-title">Jadwal Show</h2>
+
+  <button id="toggleScheduleBtn" class="toggle-btn">
+    Tampilkan Jadwal Show
+  </button>
+
+  <div id="scheduleSection" class="hidden">
+
+    <div class="schedule">
+      <h3>Regular Show</h3>
+      <p>📅 Coming Soon</p>
+      <p>⏰ Coming Soon</p>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const memberBtn = document.getElementById("toggleMemberBtn");
+  const memberSec = document.getElementById("memberSection");
+
+  memberBtn.addEventListener("click", () => {
+    memberSec.classList.toggle("hidden");
+    memberBtn.textContent = memberSec.classList.contains("hidden")
+      ? "Tampilkan Daftar Member"
+      : "Sembunyikan Daftar Member";
+  });
+
+  const scheduleBtn = document.getElementById("toggleScheduleBtn");
+  const scheduleSec = document.getElementById("scheduleSection");
+
+  scheduleBtn.addEventListener("click", () => {
+    scheduleSec.classList.toggle("hidden");
+    scheduleBtn.textContent = scheduleSec.classList.contains("hidden")
+      ? "Tampilkan Jadwal Show"
+      : "Sembunyikan Jadwal Show";
+  });
+
+  // Partikel salju
+  for(let i=0;i<30;i++){
+    let s=document.createElement("span");
+    s.className="idol";
+    s.style.left=Math.random()*100+"vw";
+    s.style.animationDuration=3+Math.random()*5+"s";
+    s.style.opacity=Math.random();
+    document.body.appendChild(s);
+  }
+});
+</script>
+
+<script>
+document.querySelectorAll('.member-card').forEach(card=>{
+  const socials = [
+    ['ig','icon','fa-brands fa-instagram'],
+    ['x','icon','fa-brands fa-x-twitter'],
+    ['tt','icon','fa-brands fa-tiktok'],
+    ['idn','text','IDN'],
+    ['sr','icon','fa-solid fa-video']
+  ];
+
+  const box = document.createElement('div');
+  box.className = 'member-social';
+
+  socials.forEach(([key,type,value])=>{
+    const url = card.dataset[key];
+    if(!url) return;
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+
+    if(type === 'icon'){
+      a.innerHTML = `<i class="${value}"></i>`;
+    }else{
+      a.textContent = value;
+      a.classList.add('idn-text');
+    }
+
+    box.appendChild(a);
+  });
+
+  card.appendChild(box);
+});
+</script>
+
+
+
+<footer>
+  <center>
+    © 2026 by 48 Replay • No copyright infringement intended
+  </center>
+</footer>
+
+
+     
+</body>
+</html>
+
