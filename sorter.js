@@ -71,53 +71,66 @@ let total = 0;
 let current = 0;
 let history = [];
 
-/* ================= FILTER ================= */
+/* FILTER */
+renderFilters();
 
 function renderFilters() {
   genBox.innerHTML = "";
   teamBox.innerHTML = "";
 
-  [...new Set(members.map(m => m.gen))].sort().forEach(g => {
-    genBox.innerHTML += `<h4>Gen ${g}</h4>`;
+  const gens = [...new Set(members.map(m => m.gen))].sort((a,b)=>a-b);
+  const teams = [...new Set(members.map(m => m.team))];
+
+  gens.forEach(g => {
+    genBox.innerHTML += `<h4>Gen ${g}</h4>
+      <button onclick="toggleGroup('gen', ${g})">Pilih Semua</button>`;
     members.filter(m => m.gen === g).forEach(m => {
-      genBox.innerHTML += `<label><input type="checkbox" value="${m.id}"> ${m.name}</label><br>`;
+      genBox.innerHTML += `<label>
+        <input type="checkbox" data-gen="${g}" value="${m.id}"> ${m.name}
+      </label>`;
     });
   });
 
-  [...new Set(members.map(m => m.team))].forEach(t => {
-    teamBox.innerHTML += `<h4>Team ${t}</h4>`;
+  teams.forEach(t => {
+    teamBox.innerHTML += `<h4>${t}</h4>
+      <button onclick="toggleGroup('team', '${t}')">Pilih Semua</button>`;
     members.filter(m => m.team === t).forEach(m => {
-      teamBox.innerHTML += `<label><input type="checkbox" value="${m.id}"> ${m.name}</label><br>`;
+      teamBox.innerHTML += `<label>
+        <input type="checkbox" data-team="${t}" value="${m.id}"> ${m.name}
+      </label>`;
     });
   });
 }
 
-renderFilters();
+function toggleGroup(type, value) {
+  const boxes = document.querySelectorAll(
+    type === "gen"
+      ? `input[data-gen="${value}"]`
+      : `input[data-team="${value}"]`
+  );
+  const allChecked = [...boxes].every(b => b.checked);
+  boxes.forEach(b => b.checked = !allChecked);
+}
 
-document.querySelectorAll('input[name="mode"]').forEach(radio => {
-  radio.addEventListener("change", e => {
+/* START */
+document.querySelectorAll('input[name="mode"]').forEach(r => {
+  r.addEventListener("change", e => {
     genBox.style.display = e.target.value === "gen" ? "block" : "none";
     teamBox.style.display = e.target.value === "team" ? "block" : "none";
   });
 });
 
-/* ================= START ================= */
-
 function startFromSelection() {
   const mode = document.querySelector('input[name="mode"]:checked').value;
   let selected = [];
 
-  if (mode === "all") {
-    selected = members;
-  } else {
+  if (mode === "all") selected = members;
+  else {
     const checked = document.querySelectorAll('#selectScreen input[type="checkbox"]:checked');
     selected = members.filter(m => [...checked].some(c => c.value === m.id));
   }
 
-  if (selected.length < 2) {
-    alert("Pilih minimal 2 member");
-    return;
-  }
+  if (selected.length < 2) return alert("Pilih minimal 2 member");
 
   document.getElementById("selectScreen").style.display = "none";
   document.getElementById("sorterScreen").style.display = "block";
@@ -125,29 +138,19 @@ function startFromSelection() {
   initSorter(selected);
 }
 
-/* ================= SORTER ================= */
-
-function updateProgress() {
-  const percent = Math.min((current / total) * 100, 100);
-  const bar = document.getElementById("progressFill");
-
-  bar.style.width = percent + "%";
-  bar.classList.remove("progress-pulse");
-
-  void bar.offsetWidth;
-  bar.classList.add("progress-pulse");
-
-  document.getElementById("progressText").innerText =
-    `${current} / ${total}`;
+/* SORTER */
+function calculateTotalBattles(n) {
+  return (n * (n - 1)) / 2;
 }
-
 
 function initSorter(data) {
   lists = data.map(m => [m]);
   shuffle(lists);
-  total = Math.ceil(data.length * Math.log2(data.length));
+  total = calculateTotalBattles(data.length);
   current = 0;
+  history = [];
   nextMerge();
+  updateProgress();
 }
 
 function shuffle(arr) {
@@ -162,7 +165,6 @@ function nextMerge() {
     showResult(lists[0]);
     return;
   }
-
   left = lists.shift();
   right = lists.shift();
   merged = [];
@@ -176,133 +178,57 @@ function showBattle() {
     nextMerge();
     return;
   }
-
   if (li >= left.length) return merged.push(right[ri++]), showBattle();
   if (ri >= right.length) return merged.push(left[li++]), showBattle();
 
-  document.getElementById("leftImg").src = left[li].img;
-  document.getElementById("leftName").innerText = left[li].name;
-  document.getElementById("rightImg").src = right[ri].img;
-  document.getElementById("rightName").innerText = right[ri].name;
-
-  document.getElementById("progress").innerText = `Progress ${current + 1} / ${total}`;
+  leftImg.src = left[li].img;
+  leftName.innerText = left[li].name;
+  rightImg.src = right[ri].img;
+  rightName.innerText = right[ri].name;
 }
 
-function choose(choice) {
-  history.push({
-    lists: JSON.parse(JSON.stringify(lists)),
-    left: [...left],
-    right: [...right],
-    merged: [...merged],
-    li,
-    ri,
-    current
-  });
+function choose(side) {
+  history.push({ lists: JSON.parse(JSON.stringify(lists)), left:[...left], right:[...right], merged:[...merged], li, ri, current });
 
   current++;
 
-  if (choice === "left") {
-    merged.push(left[li++]);
-  } else if (choice === "right") {
-    merged.push(right[ri++]);
-  } else {
-    merged.push(left[li++], right[ri++]);
-  }
+  if (side === "left") merged.push(left[li++]);
+  else if (side === "right") merged.push(right[ri++]);
+  else merged.push(left[li++], right[ri++]);
 
+  updateProgress();
   showBattle();
 }
 
 function undo() {
   if (!history.length) return;
-
-  const prev = history.pop();
-  lists = prev.lists;
-  left = prev.left;
-  right = prev.right;
-  merged = prev.merged;
-  li = prev.li;
-  ri = prev.ri;
-  current = prev.current;
-
+  const h = history.pop();
+  ({ lists, left, right, merged, li, ri, current } = h);
+  updateProgress();
   showBattle();
 }
 
+function updateProgress() {
+  progressText.innerText = `${current} / ${total}`;
+  progressFill.style.width = `${Math.min((current / total) * 100, 100)}%`;
+}
 
+/* RESULT */
 function showResult(finalList) {
-  document.body.innerHTML = `
-    <h1>Hasil Ranking</h1>
+  document.getElementById("sorterScreen").innerHTML = `
+    <h2>Hasil Ranking</h2>
+
+    <p style="opacity:.8;margin-bottom:12px">
+      Tidak mencapai target biasanya sudah <b>DONE</b>,
+      karena kamu hanya memilih <b>oshi yang tepat</b> 💙
+    </p>
+
     <div class="result-grid"></div>
-    <button onclick="location.reload()">Ulangi Sorter</button>
+    <button onclick="location.reload()">Ulangi</button>
   `;
 
   const grid = document.querySelector(".result-grid");
-
-  finalList.forEach((m, i) => {
-    grid.innerHTML += `
-      <div class="result-card">
-        <div class="rank">#${i + 1}</div>
-        <img src="${m.img}">
-        <div class="info">
-          <p class="name">${m.name}</p>
-          <p class="meta">Gen ${m.gen} · Team ${m.team}</p>
-        </div>
-      </div>
-    `;
+  finalList.forEach((m,i)=>{
+    grid.innerHTML += `<p>#${i+1} — ${m.name}</p>`;
   });
-}
-
-
-function renderFilters() {
-  genBox.innerHTML = "";
-  teamBox.innerHTML = "";
-
-  const gens = [...new Set(members.map(m => m.gen))].sort((a,b)=>a-b);
-  const teams = [...new Set(members.map(m => m.team))];
-
-  gens.forEach(g => {
-    genBox.innerHTML += `<h4>Generasi ${g}</h4>`;
-    genBox.innerHTML += `
-      <button type="button" onclick="toggleGroup('gen', ${g})">
-        All Gen ${g}
-      </button>
-    `;
-    members.filter(m => m.gen === g).forEach(m => {
-      genBox.innerHTML += `
-        <label>
-          <input type="checkbox" value="${m.id}" data-gen="${m.gen}">
-          ${m.name}
-        </label><br>
-      `;
-    });
-  });
-
-  teams.forEach(t => {
-    teamBox.innerHTML += `<h4>Team ${t}</h4>`;
-    teamBox.innerHTML += `
-      <button type="button" onclick="toggleGroup('team', '${t}')">
-        All ${t}
-      </button>
-    `;
-    members.filter(m => m.team === t).forEach(m => {
-      teamBox.innerHTML += `
-        <label>
-          <input type="checkbox" value="${m.id}" data-team="${m.team}">
-          ${m.name}
-        </label><br>
-      `;
-    });
-  });
-}
-
-function toggleGroup(type, value) {
-  const selector =
-    type === "gen"
-      ? `#genSelect input[data-gen="${value}"]`
-      : `#teamSelect input[data-team="${value}"]`;
-
-  const boxes = document.querySelectorAll(selector);
-  if (!boxes.length) return;
-
-  const allChecked = [...boxes].every(b => b.checked);
-  boxes.forEach(b => b.checked = !allChecked);
 }
