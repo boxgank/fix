@@ -1,0 +1,312 @@
+* {
+  box-sizing: border-box;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 24px;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+}
+
+/* ===== TITLE ===== */
+h1 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+}
+
+h4 {
+  margin: 24px 0 8px;
+  font-size: 1.1rem;
+  color: #ffd6ff;
+}
+
+/* ===== SELECT SCREEN ===== */
+#selectScreen {
+  max-width: 900px;
+  margin: auto;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+}
+
+/* ===== MODE RADIO ===== */
+#selectScreen label {
+  margin-right: 16px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+input[type="radio"] {
+  accent-color: #ff79c6;
+}
+
+/* ===== TEAM / GEN BOX ===== */
+#genSelect,
+#teamSelect {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(0,0,0,0.25);
+}
+
+/* ===== ALL BUTTON ===== */
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: linear-gradient(135deg, #ff79c6, #8be9fd);
+  color: #111;
+  margin: 6px 0 10px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(255,121,198,0.4);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* ===== CHECKBOX MEMBER ===== */
+label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  margin-bottom: 6px;
+  background: rgba(255,255,255,0.05);
+  transition: background 0.15s ease;
+}
+
+label:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #8be9fd;
+  cursor: pointer;
+}
+
+/* ===== START BUTTON ===== */
+#selectScreen > button {
+  display: block;
+  margin: 30px auto 0;
+  padding: 14px 36px;
+  font-size: 1rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #50fa7b, #8be9fd);
+  box-shadow: 0 12px 30px rgba(80,250,123,0.4);
+}
+
+#selectScreen > button:hover {
+  box-shadow: 0 16px 40px rgba(80,250,123,0.6);
+}
+
+/* ===== SORTER SCREEN ===== */
+#sorterScreen {
+  max-width: 900px;
+  margin: auto;
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* ===== PROGRESS ===== */
+#progress {
+  margin-bottom: 14px;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+/* ===== BATTLE CARD ===== */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 14px;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+
+.card {
+  width: 100%;
+  max-width: 170px;
+  min-width: 140px;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 18px 40px rgba(255,121,198,0.45);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.card p {
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+/* ===== TIE BUTTON ===== */
+#sorterScreen button {
+  margin-top: 20px;
+  background: linear-gradient(135deg, #ffb86c, #ff79c6);
+  box-shadow: 0 10px 30px rgba(255,184,108,0.4);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.result-card {
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.result-card img {
+  width: 100%;
+  border-radius: 12px;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+}
+
+.rank {
+  font-weight: 900;
+  font-size: 1.1rem;
+  color: #ff79c6;
+  margin-bottom: 6px;
+}
+
+.name {
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.meta {
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
+#genSelect label,
+#teamSelect label {
+  font-size: 0.85rem;
+  padding: 6px 8px;
+  border-radius: 10px;
+}
+
+#genSelect input[type="checkbox"],
+#teamSelect input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+}
+
+#genSelect h4,
+#teamSelect h4 {
+  font-size: 0.95rem;
+  margin-top: 18px;
+}
+
+.battle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.cards {
+  display: flex;
+  gap: 32px;
+}
+
+.card {
+  width: 220px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 18px;
+  transition: transform 0.2s ease;
+}
+
+.card:hover img {
+  transform: scale(1.04);
+}
+
+.battle-controls {
+  display: flex;
+  gap: 16px;
+}
+
+.battle-controls button {
+  padding: 10px 20px;
+  border-radius: 14px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.undo-btn {
+  background: #333;
+  color: #fff;
+}
+
+.tie-btn {
+  background: #ff5c8a;
+  color: white;
+}
+
+#progress {
+  font-size: 14px;
+  opacity: 0.7;
+}

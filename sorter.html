@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>JKT48 Member Sorter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="sorter.css">
+</head>
+<body>
+
+<h1>JKT48 Member Sorter</h1>
+
+<div id="selectScreen">
+  <h3>Pilih Mode</h3>
+
+  <label><input type="radio" name="mode" value="all" checked> Semua Member</label>
+  <label><input type="radio" name="mode" value="gen"> Berdasarkan Generasi</label>
+  <label><input type="radio" name="mode" value="team"> Berdasarkan Team</label>
+
+  <div id="genSelect" style="display:none"></div>
+  <div id="teamSelect" style="display:none"></div>
+
+  <button onclick="startFromSelection()">Start Sorting</button>
+</div>
+
+<div id="sorterScreen" style="display:none">
+  <p id="progress"></p>
+
+<div class="battle">
+
+  <div class="cards">
+    <div class="card" onclick="choose('left')">
+      <img id="leftImg">
+      <p id="leftName"></p>
+    </div>
+
+    <div class="card" onclick="choose('right')">
+      <img id="rightImg">
+      <p id="rightName"></p>
+    </div>
+  </div>
+
+  <div class="battle-controls">
+    <button class="undo-btn" onclick="undo()">UNDO</button>
+    <button class="tie-btn" onclick="choose('tie')">TIE</button>
+  </div>
+
+  <p id="progress"></p>
+</div>
+
+<script src="sorter.js"></script>
+</body>
+</html>
